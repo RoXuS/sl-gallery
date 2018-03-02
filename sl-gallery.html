@@ -128,7 +128,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         // Create observer to watch for new nodes added from light dom
         this._observer = new Polymer.FlattenedNodesObserver(this, (info) => {
-          this._images = [...info.target.children];
+          const filterNode = Array.from(info.target.children).filter(child => child.tagName === 'SL-GALLERY-IMAGE');
+          this._images = [...filterNode];
         });
       }
 
